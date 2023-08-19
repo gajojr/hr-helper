@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpForm from '../../components/HomePageComponents/SignUpForm/SignUpForm.component';
+import SignUpForm from '../../components/HomePageComponents/Intro/Intro.component';
 import Header from '../../components/Header/Header.component';
 
 const SignUpUser = () => {
