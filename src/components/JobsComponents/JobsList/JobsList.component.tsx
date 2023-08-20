@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	ApplyBtn,
 	CompanyAndStack,
@@ -12,6 +12,7 @@ import {
 	Tag,
 	Wrapper,
 } from './JobsList.style';
+import JobAcceptanceProbabilityModal from '../../JobAcceptanceProbabilityModal/JobAcceptanceProbabiltiyPortal.component';
 
 const mockJobs = [
 	{
@@ -45,8 +46,33 @@ const mockJobs = [
 ];
 
 const JobsList = () => {
+	const [fetchedData, setFetchedData] = useState(null);
+	const [isModalOpen, setModalOpen] = useState(false);
+
+	const mockApply = async () => {
+		try {
+			const response = await fetch(
+				'https://jsonplaceholder.typicode.com/posts/1'
+			);
+			const data = await response.json();
+			setFetchedData(data);
+			setModalOpen(true);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
+
 	return (
 		<Wrapper>
+			{isModalOpen ? (
+				<JobAcceptanceProbabilityModal
+					isOpen={isModalOpen}
+					onClose={() => setModalOpen(false)}
+				>
+					<h2>Your Content Here</h2>
+					<p>This is a modal example using createPortal!</p>
+				</JobAcceptanceProbabilityModal>
+			) : null}
 			<List>
 				{mockJobs.map((job) => {
 					return (
@@ -66,7 +92,7 @@ const JobsList = () => {
 									</CompanyStack>
 								</CompanyAndStack>
 							</JobInfo>
-							<ApplyBtn>Apply</ApplyBtn>
+							<ApplyBtn onClick={mockApply}>Apply</ApplyBtn>
 						</JobListing>
 					);
 				})}
