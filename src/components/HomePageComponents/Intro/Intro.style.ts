@@ -1,18 +1,20 @@
-.div {
+import styled from 'styled-components';
+
+export const Wrapper = styled.section`
 	background-color: #fff;
 	width: 100%;
 	z-index: 1;
-}
+`;
 
-.div .overlap {
+export const Overlap = styled.div`
 	width: 100%;
-}
+`;
 
-.div .overlap-group {
+export const OverlapGroup = styled.div`
 	width: 100%;
-}
+`;
 
-.div .ellipse {
+export const Ellipse = styled.div`
 	border: 1px solid;
 	border-color: #8db5ff;
 	border-radius: 118.5px;
@@ -21,9 +23,9 @@
 	position: absolute;
 	top: 370px;
 	width: 237px;
-}
+`;
 
-.div .ellipse-2 {
+export const Ellipse2 = styled.div`
 	background-color: #5d96ff;
 	border-radius: 152px;
 	height: 304px;
@@ -31,39 +33,24 @@
 	position: absolute;
 	top: 0;
 	width: 304px;
-}
+`;
 
-.div .img {
+export const EllipseImg = styled.img`
 	height: 542px;
 	left: 610px;
 	position: absolute;
 	width: 789px;
-}
+`;
 
-.div .text-wrapper {
-	color: #ffffff;
-	font-family: 'Red Hat Display-SemiBold', Helvetica;
-	font-size: 14px;
-	font-weight: 600;
-	height: 19px;
-	left: 19px;
-	letter-spacing: 0;
-	line-height: normal;
-	position: absolute;
-	text-align: center;
-	top: 12px;
-	width: 72px;
-}
-
-.div .worker {
+export const WorkerImg = styled.img`
 	height: 315px;
 	left: 989px;
 	position: absolute;
 	top: 268px;
 	width: 262px;
-}
+`;
 
-.div .ellipse-3 {
+export const EllipseImg3 = styled.div`
 	background-color: #2a75ff;
 	border-radius: 5px;
 	height: 10px;
@@ -71,9 +58,9 @@
 	position: absolute;
 	top: 448px;
 	width: 10px;
-}
+`;
 
-.div .ellipse-4 {
+export const EllipseImg4 = styled.div`
 	background-color: #2a75ff;
 	border-radius: 5px;
 	height: 10px;
@@ -81,9 +68,9 @@
 	position: absolute;
 	top: 509px;
 	width: 10px;
-}
+`;
 
-.div .frame {
+export const Frame = styled.div`
 	align-items: flex-start;
 	display: inline-flex;
 	flex-direction: column;
@@ -91,9 +78,9 @@
 	left: 317px;
 	position: absolute;
 	top: 292px;
-}
+`;
 
-.div .p {
+export const TextWrapper = styled.p`
 	color: #000000;
 	font-family: 'Red Hat Display-Bold', Helvetica;
 	font-size: 32px;
@@ -103,9 +90,9 @@
 	margin-top: -1px;
 	position: relative;
 	width: 471px;
-}
+`;
 
-.div .text-wrapper-2 {
+export const TextWrapper2 = styled.p`
 	color: #000000;
 	font-family: 'Red Hat Display-Light', Helvetica;
 	font-size: 15px;
@@ -114,17 +101,17 @@
 	line-height: normal;
 	position: relative;
 	width: 470px;
-}
+`;
 
-.div .overlap-2 {
+export const Overlap2 = styled.div`
 	height: 216px;
 	left: 177px;
 	position: absolute;
 	top: 651px;
 	width: 1217px;
-}
+`;
 
-.div .ellipse-5 {
+export const Ellipse5 = styled.div`
 	background-color: #5d96ff;
 	border-radius: 104px;
 	height: 208px;
@@ -132,9 +119,9 @@
 	position: absolute;
 	top: 0;
 	width: 208px;
-}
+`;
 
-.div .ellipse-6 {
+export const Ellipse6 = styled.div`
 	background-color: #5d96ff;
 	border-radius: 64px;
 	height: 128px;
@@ -142,9 +129,9 @@
 	position: absolute;
 	top: 88px;
 	width: 128px;
-}
+`;
 
-.div .section {
+export const FormWrapper = styled.div`
 	align-items: flex-start;
 	background-color: #f6f7f8;
 	border-radius: 10px;
@@ -156,32 +143,32 @@
 	position: absolute;
 	top: 41px;
 	width: 1072px;
-}
+`;
 
-.div .form {
+export const Form = styled.div`
 	align-items: flex-start;
 	display: flex;
 	max-width: 800px;
 	position: relative;
 	width: 800px;
-}
+`;
 
-.div .div-form-input-group {
+export const FormInputGroup = styled.div`
 	align-items: flex-start;
 	display: flex;
 	justify-content: space-between;
 	position: relative;
 	width: 584px;
-}
+`;
 
-.div .div-form-input {
+export const FormInput = styled.div`
 	align-items: flex-start;
 	display: flex;
 	position: relative;
 	width: 286.16px;
-}
+`;
 
-.div .input-job-title-or {
+export const InputJobTitle = styled.div`
 	align-items: flex-start;
 	background-color: #ffffff;
 	border: 1px solid;
@@ -192,16 +179,16 @@
 	flex-grow: 1;
 	padding: 14px 18px 14px 41px;
 	position: relative;
-}
+`;
 
-.div .div-placeholder {
+export const InputWrapper = styled.div`
 	align-items: flex-start;
 	display: flex;
 	position: relative;
 	width: 227.16px;
-}
+`;
 
-.div .text-wrapper-3 {
+export const TextWrapper3 = styled.div`
 	color: #72777c;
 	font-family: 'Red Hat Display-Regular', Helvetica;
 	font-size: 18px;
@@ -211,17 +198,17 @@
 	margin-top: -1px;
 	position: relative;
 	width: fit-content;
-}
+`;
 
-.div .icon {
+export const Icon = styled.img`
 	height: 20px;
 	left: 7px;
 	position: absolute;
 	top: 15px;
 	width: 30px;
-}
+`;
 
-.div .input-search-city {
+export const CountryInput = styled.div`
 	align-items: flex-start;
 	background-color: #ffffff;
 	border: 1px solid;
@@ -232,33 +219,26 @@
 	flex-grow: 1;
 	padding: 14px 36px 14px 41px;
 	position: relative;
-}
+`;
 
-.div .div-wrapper {
-	align-items: flex-start;
-	display: flex;
-	position: relative;
-	width: 209.16px;
-}
-
-.div .button-clear {
+export const ClearIcon = styled.img`
 	height: 23px;
 	left: 257px;
 	position: absolute;
 	top: 14px;
 	width: 22px;
-}
+`;
 
-.div .div-form-submit {
+export const SubmitWrapper = styled.div`
 	align-items: flex-start;
 	display: flex;
 	justify-content: center;
 	padding: 0px 0px 0px 13px;
 	position: relative;
 	width: 216px;
-}
+`;
 
-.div .button {
+export const Button = styled.div`
 	align-items: flex-start;
 	background-color: #2a75ff;
 	border: 1px solid;
@@ -271,9 +251,9 @@
 	max-width: 320px;
 	padding: 13px 41px;
 	position: relative;
-}
+`;
 
-.div .text-wrapper-4 {
+export const TextWrapper4 = styled.div`
 	color: #ffffff;
 	font-family: 'Red Hat Display-Bold', Helvetica;
 	font-size: 16px;
@@ -285,9 +265,9 @@
 	text-align: center;
 	white-space: nowrap;
 	width: fit-content;
-}
+`;
 
-.div .text-wrapper-5 {
+export const TextWrapper5 = styled.div`
 	color: #000000;
 	font-family: 'Red Hat Display-Bold', Helvetica;
 	font-size: 32px;
@@ -298,11 +278,11 @@
 	line-height: normal;
 	position: absolute;
 	text-align: center;
-	top: 788px;
+	top: 828px;
 	width: 850px;
-}
+`;
 
-.div .div-hiw-text {
+export const BottomWrapper = styled.div`
 	align-items: flex-start;
 	display: flex;
 	height: 353px;
@@ -311,23 +291,23 @@
 	position: absolute;
 	top: 874px;
 	width: 536px;
-}
+`;
 
-.div .ordered-list {
+export const OrderedList = styled.div`
 	height: 377px;
 	margin-bottom: -64px;
 	max-width: 480px;
 	position: relative;
 	width: 480px;
-}
+`;
 
-.div .overlap-group-3 {
+export const OverlapGroup3 = styled.div`
 	height: 238px;
 	position: relative;
 	top: 41px;
-}
+`;
 
-.div .pseudo-2 {
+export const Pseudo2 = styled.div`
 	background-color: #2a75ff;
 	border-radius: 0px 6px 6px 0px;
 	height: 238px;
@@ -335,17 +315,25 @@
 	position: absolute;
 	top: 0;
 	width: 6px;
-}
+`;
 
-.div .item {
+export const Item = styled.div`
 	height: 99px;
 	left: 0;
 	position: absolute;
 	top: 0;
 	width: 480px;
-}
+`;
 
-.div .text-wrapper-6 {
+export const Item2 = styled.div`
+	height: 99px;
+	left: 0;
+	position: absolute;
+	top: 139px;
+	width: 480px;
+`;
+
+export const TextWrapper6 = styled.div`
 	color: #2f3639;
 	font-family: 'Red Hat Display-Bold', Helvetica;
 	font-size: 19px;
@@ -357,38 +345,18 @@
 	position: absolute;
 	top: -1px;
 	white-space: nowrap;
-}
+`;
 
-.div .p-2 {
+export const P2 = styled.div`
 	align-items: flex-start;
 	display: flex;
 	left: 40px;
 	position: absolute;
 	top: 26px;
 	width: 440px;
-}
+`;
 
-.div .showcases-your {
-	color: #2f3639;
-	font-family: 'Red Hat Display-Regular', Helvetica;
-	font-size: 16px;
-	font-weight: 400;
-	letter-spacing: 0;
-	line-height: 24px;
-	margin-top: -1px;
-	position: relative;
-	width: fit-content;
-}
-
-.div .item-2 {
-	height: 99px;
-	left: 0;
-	position: absolute;
-	top: 139px;
-	width: 480px;
-}
-
-.div .text-wrapper-7 {
+export const TextWrapper7 = styled.p`
 	color: #2f3639;
 	font-family: 'Red Hat Display-Regular', Helvetica;
 	font-size: 16px;
@@ -397,4 +365,4 @@
 	line-height: 24px;
 	position: relative;
 	width: 440px;
-}
+`;
