@@ -1,15 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
 	AddFileIcon,
 	FileInput,
 	Form,
 	Label,
+	RemoveFileButton,
+	RemoveFileIcon,
 	UploadFileButton,
 	UrlInput,
 } from './SignUpForm.style';
 
 const SignUpForm = () => {
 	const fileInputRef = useRef(null);
+	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
 	const handleButtonClick = () => {
 		if (fileInputRef.current) {
@@ -19,11 +22,25 @@ const SignUpForm = () => {
 
 	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const selectedFile = e.target.files ? e.target.files[0] : null;
+
+		console.log(selectedFile);
+		if (!selectedFile) {
+			return;
+		}
+
 		if (selectedFile && selectedFile.type === 'application/pdf') {
-			// Handle the PDF upload
-			console.log(selectedFile);
+			setUploadedFile(selectedFile);
 		} else {
 			console.error('Please select a valid PDF file.');
+		}
+	};
+
+	const handleFileRemove = (e: React.MouseEvent) => {
+		e.stopPropagation();
+
+		setUploadedFile(null);
+		if (fileInputRef.current) {
+			(fileInputRef.current as HTMLInputElement).value = ''; // Clear the file input
 		}
 	};
 
@@ -60,9 +77,26 @@ const SignUpForm = () => {
 					onChange={handleFileChange}
 					accept='.pdf'
 				/>
-				<UploadFileButton onClick={handleButtonClick}>
-					<AddFileIcon src='/images/add-file-icon.svg' />
-				</UploadFileButton>
+				{uploadedFile ? (
+					<>
+						<span>{uploadedFile.name}</span>
+						<RemoveFileButton>
+							{/* Assuming you have a remove icon similar to add-file-icon.svg */}
+							<RemoveFileIcon
+								src='/images/close-icon.svg'
+								onClick={handleFileRemove}
+							/>
+						</RemoveFileButton>
+					</>
+				) : (
+					<UploadFileButton
+						type='button'
+						onClick={handleButtonClick}
+						disabled={!!uploadedFile}
+					>
+						<AddFileIcon src='/images/add-file-icon.svg' />
+					</UploadFileButton>
+				)}
 			</Label>
 		</Form>
 	);
