@@ -4,6 +4,7 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.component
 import SignUpRouter from './components/SignUpRouter/SingUpRouter.component';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.page'));
+const Jobs = lazy(() => import('./pages/Jobs/Jobs.page'));
 
 const App: React.FC = () => {
 	return (
@@ -22,6 +23,14 @@ const App: React.FC = () => {
 					element={
 						<Suspense fallback={LoadingSpinner()}>
 							<SignUpRouter />
+						</Suspense>
+					}
+				/>
+				<Route
+					path='/jobs'
+					element={
+						<Suspense fallback={LoadingSpinner()}>
+							<Jobs />
 						</Suspense>
 					}
 				/>
