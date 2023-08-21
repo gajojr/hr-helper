@@ -97,7 +97,7 @@ export const PercentageFill = styled.div<{ percentage: number }>`
 	left: 0;
 	width: ${(props) => props.percentage}%;
 	height: 100%;
-	background-color: blue;
+	background-color: #2a75ff;
 `;
 
 export const PercentageText = styled.span`

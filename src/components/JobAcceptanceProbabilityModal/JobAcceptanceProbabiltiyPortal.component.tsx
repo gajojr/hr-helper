@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
 	CloseButton,
@@ -14,12 +14,7 @@ import {
 	Title,
 	TopRow,
 } from './JobAcceptanceProbabilityModal.style';
-
-type ModalProps = {
-	isOpen: boolean;
-	onClose: () => void;
-	children: React.ReactNode;
-};
+import { ModalProps } from './JobAcceptanceProbabilityPortal.types';
 
 const LoaderGraph: React.FC<{ percentage: number }> = ({ percentage }) => {
 	return (
@@ -30,19 +25,28 @@ const LoaderGraph: React.FC<{ percentage: number }> = ({ percentage }) => {
 	);
 };
 
-const goodSides = ['Great problem solving', 'Effective communication'];
-const badSides = [
-	'Needs to improve on time management',
-	'Lacks experience with TypeScript',
-];
-const percentage = 85; // Adjust as needed
-
 const JobAcceptanceProbabilityModal: React.FC<ModalProps> = ({
 	isOpen,
 	onClose,
+	data,
 	children,
 }) => {
-	if (!isOpen) return null;
+	const [candidatePros, setCandidatePros] = useState([]);
+	const [candidateCons, setCandidateCons] = useState([]);
+	const [successRate, setSuccesRate] = useState(0);
+
+	useEffect(() => {
+		if (!data.data) {
+			console.log('usao');
+			return;
+		}
+
+		setCandidatePros(data.data.jsonOut.candidate_pros);
+		setCandidateCons(data.data.jsonOut.candidate_cons);
+		setSuccesRate(data.data.jsonOut.candidate_score);
+	}, [data]);
+
+	if (!isOpen || !data.data) return null;
 
 	return ReactDOM.createPortal(
 		<ModalBackground>
@@ -52,24 +56,24 @@ const JobAcceptanceProbabilityModal: React.FC<ModalProps> = ({
 					<CloseButton onClick={onClose}>X</CloseButton>
 				</TopRow>
 				<Section>
-					<Subtitle>Good side:</Subtitle>
+					<Subtitle>Pros:</Subtitle>
 					<List>
 						{/* Example list of good sides */}
-						{goodSides.map((item, index) => (
+						{candidatePros.map((item, index) => (
 							<ListItem key={index}>{item}</ListItem>
 						))}
 					</List>
 				</Section>
 				<Section>
-					<Subtitle>Bad side:</Subtitle>
+					<Subtitle>Cons:</Subtitle>
 					<List>
 						{/* Example list of bad sides */}
-						{badSides.map((item, index) => (
+						{candidateCons.map((item, index) => (
 							<ListItem key={index}>{item}</ListItem>
 						))}
 					</List>
 				</Section>
-				<LoaderGraph percentage={percentage} />
+				<LoaderGraph percentage={successRate} />
 			</ModalContent>
 		</ModalBackground>,
 		document.getElementById('root') as HTMLElement

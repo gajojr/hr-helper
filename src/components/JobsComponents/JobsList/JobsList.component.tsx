@@ -21,6 +21,7 @@ import {
 	RemoveFileIcon,
 	UploadFileButton,
 } from '../../SignUpUserComponents/SignUpForm/SignUpForm.style';
+import { ServerResponse } from '../../JobAcceptanceProbabilityModal/JobAcceptanceProbabilityPortal.types';
 
 const mockJobs = [
 	{
@@ -54,7 +55,7 @@ const mockJobs = [
 ];
 
 const JobsList = () => {
-	const [fetchedData, setFetchedData] = useState(null);
+	const [fetchedData, setFetchedData] = useState({});
 	const [isModalOpen, setModalOpen] = useState(false);
 	const fileInputRef = useRef(null);
 	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -74,7 +75,7 @@ const JobsList = () => {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data);
+					setFetchedData(data);
 				})
 				.catch((error) => {
 					console.error('Error:', error);
@@ -119,8 +120,12 @@ const JobsList = () => {
 		<Wrapper>
 			{isModalOpen ? (
 				<JobAcceptanceProbabilityModal
+					data={fetchedData as ServerResponse}
 					isOpen={isModalOpen}
-					onClose={() => setModalOpen(false)}
+					onClose={() => {
+						setModalOpen(false);
+						setFetchedData({});
+					}}
 				>
 					<h2>Your Content Here</h2>
 					<p>This is a modal example using createPortal!</p>
