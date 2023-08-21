@@ -95,3 +95,20 @@ export const RemoveFileIcon = styled.img`
 		fill: #d90000; // Slightly darker red on hover
 	}
 `;
+
+export const ApplyBtn = styled.button`
+	background: none; // No background color to make it clean
+	border: 1px solid gray; // Remove borders
+	border-radius: 10px;
+	cursor: pointer; // Pointer cursor to indicate clickability
+	padding: 15px 5px; // Some padding to increase touch target
+	display: flex; // To center the icon
+	align-items: center; // Vertically center the icon
+	justify-content: center; // Horizontally center the icon
+	transition: opacity 0.3s; // Smooth transition for hover effect
+	width: 100%;
+
+	&:hover {
+		opacity: 0.7; // Slight fade on hover for feedback
+	}
+`;

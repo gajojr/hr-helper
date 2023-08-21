@@ -1,18 +1,50 @@
 import React, { useRef, useState } from 'react';
 import {
 	AddFileIcon,
+	ApplyBtn,
 	FileInput,
 	Form,
 	Label,
 	RemoveFileButton,
 	RemoveFileIcon,
+	TextInput,
 	UploadFileButton,
 	UrlInput,
 } from './SignUpForm.style';
+import { IFormEvent } from './SignUpForm.types';
+import { useDispatch } from 'react-redux';
+import {
+	selectEmail,
+	selectFullName,
+	selectGithub,
+	selectLinkedin,
+	selectPdfFile,
+} from '../../../redux/reducers/Auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const fileInputRef = useRef(null);
 	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+
+	const handleSubmit = async (e: IFormEvent) => {
+		e.preventDefault();
+
+		const fullName = e.target.fullName.value;
+		const email = e.target.email.value;
+		const linkedin = e.target.linkedin.value;
+		const github = e.target.github.value;
+		const pdfFile = e.target.pdfFile.files[0];
+
+		dispatch(selectFullName(fullName));
+		dispatch(selectEmail(email));
+		dispatch(selectLinkedin(linkedin));
+		dispatch(selectGithub(github));
+		dispatch(selectPdfFile(pdfFile));
+
+		navigate('/jobs');
+	};
 
 	const handleButtonClick = () => {
 		if (fileInputRef.current) {
@@ -45,33 +77,40 @@ const SignUpForm = () => {
 	};
 
 	return (
-		<Form>
+		<Form onSubmit={handleSubmit}>
 			<Label>
 				Full name:
-				<UrlInput placeholder='Full Name' />
+				<TextInput
+					placeholder='Full Name'
+					name='fullName'
+				/>
 			</Label>
 			<Label>
 				Email:
-				<UrlInput
+				<TextInput
 					placeholder='example@gmail.com'
 					type='email'
+					name='email'
 				/>
 			</Label>
 			<Label>
 				Linkedin:
-				<UrlInput placeholder='Linkedin URL' />
-			</Label>
-			<Label>
-				Linkedin:
-				<UrlInput placeholder='Linkedin URL' />
+				<UrlInput
+					placeholder='Linkedin URL'
+					name='linkedin'
+				/>
 			</Label>
 			<Label>
 				Github:
-				<UrlInput placeholder='Github URL' />
+				<UrlInput
+					placeholder='Github URL'
+					name='github'
+				/>
 			</Label>
 			<Label>
 				Upload your cv/resume:
 				<FileInput
+					name='pdfFile'
 					type='file'
 					ref={fileInputRef}
 					onChange={handleFileChange}
@@ -98,6 +137,7 @@ const SignUpForm = () => {
 					</UploadFileButton>
 				)}
 			</Label>
+			<ApplyBtn>Apply</ApplyBtn>
 		</Form>
 	);
 };
